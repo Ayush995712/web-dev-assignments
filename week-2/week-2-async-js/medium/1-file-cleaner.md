@@ -10,4 +10,18 @@ After the program runs, the output should be
 
 ```
 hello world my name is raman
-```
+
+const fs = require('fs');
+
+try {
+    const data = fs.readFileSync('example.txt', 'utf8');
+    const result = data.replace(/\s+/g, ' ').trim();
+    try {
+        fs.writeFileSync('example.txt', result);
+        console.log('File has been saved!');
+    } catch (err) {
+        console.error(err);
+    }
+} catch (err) {
+    console.error(err);
+}
